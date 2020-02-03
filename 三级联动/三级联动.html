@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background-color: aliceblue;
+        }
+
+        .container {
+            width: 400px;
+            margin: 100px auto;
+        }
+
+        li {
+            margin: 10px;
+            background-color: #eeeeee;
+            padding: 20px;
+        }
+
+        .label {
+            display: inline-block;
+            color: #03a9f4;
+        }
+
+        .label::after {
+            content: '|';
+            margin-left: 10px;
+            margin-right: 10px;
+            color: black;
+        }
+
+        select {
+            width: 70%;
+            height: 30px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="container">
+        <li class="row">
+            <p class="label">省 份</p>
+            <select id="province"></select>
+        </li>
+        <li class="row">
+            <p class="label">城 市</p>
+            <select id="city"></select>
+        </li>
+        <li class="row">
+            <p class="label">学 校</p>
+            <select id="school"></select>
+        </li>
+    </ul>
+
+    <script src="AllSchool.js"></script>
+    <script>
+
+
+        var provinceNode = document.getElementById('province');
+        var cityNode = document.getElementById('city');
+        var schoolNode = document.getElementById('school');
+
+
+        var provinceStr = '';
+        var cityStr = '';
+        var schoolStr = '';
+
+        for (let i = 0; i < province.length; i++) {
+            provinceStr += '<option value=' + province[i][0] + '>' + province[i][1] + '</option>';
+
+        }
+        provinceNode.innerHTML = provinceStr;
+
+
+        var cityArr = city[provinceNode.value];
+        for (let i = 0; i < cityArr.length; i++) {
+            cityStr += '<option value=' + cityArr[i][0] + '>' + cityArr[i][1] + '</option>';
+        }
+        cityNode.innerHTML = cityStr;
+        var schoolArr = allschool[cityNode.value];
+
+
+        for (let i = 0; i < schoolArr.length; i++) {
+            schoolStr += '<option>' + schoolArr[i][2] + ' </option>'
+        }
+        schoolNode.innerHTML = schoolStr;
+
+        provinceNode.onchange = function () {
+            cityStr = '';
+            var cityArr = city[provinceNode.value];
+            for (let i = 0; i < cityArr.length; i++) {
+                cityStr += '<option value=' + cityArr[i][0] + '>' + cityArr[i][1] + '</option>';
+            }
+            cityNode.innerHTML = cityStr;
+            var schoolArr = allschool[cityNode.value];
+        }
+
+        cityNode.onchange = function () {
+            var schoolArr = allschool[cityNode.value];
+            schoolStr='';
+            for (let i = 0; i < schoolArr.length; i++) {
+                schoolStr += '<option>' + schoolArr[i][2] + ' </option>'
+            }
+            schoolNode.innerHTML = schoolStr;
+        }
+
+
+    </script>
+
+</body>
+
+</html>
