@@ -105,6 +105,13 @@
             }
             cityNode.innerHTML = cityStr;
             var schoolArr = allschool[cityNode.value];
+            schoolStr='';
+            for (let i = 0; i < schoolArr.length; i++) {
+                schoolStr += '<option>' + schoolArr[i][2] + ' </option>'
+            }
+            schoolNode.innerHTML = schoolStr;
+
+            
         }
 
         cityNode.onchange = function () {
