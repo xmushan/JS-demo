@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 500px;
+            height: 300px;
+            margin: 10px auto;
+            overflow: hidden;
+        }
+
+        img {
+            width: 500px;
+            height: 300px;
+        }
+
+        .dots {
+            position: absolute;
+            bottom: 90px;
+            width: 500px;
+            text-align: center;
+        }
+
+        .dots span {
+            margin: 10px;
+            width: 12px;
+            height: 12px;
+            display: inline-block;
+            background-color: blanchedalmond;
+            margin-inline-start: 0 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+
+        .dots span:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="img">
+        </div>
+        <div class="dots"></div>
+    </div>
+
+
+
+
+</body>
+
+<script>
+    var imgs = [
+        { src: './1.jpg' },
+        { src: './2.jpg' },
+        { src: './3.jpg' },
+    ];
+
+    var container = document.getElementsByClassName('container')[0];
+    var divImg = document.getElementsByClassName('img')[0];
+    var divDots = document.getElementsByClassName('dots')[0];
+
+    var containerWidth = container.clientWidth;
+
+    var index = 0;
+    var moveTimer = null;
+    var autoTimer = null;
+    function createElements() {
+
+        createImg(imgs[imgs.length - 1]);
+        for (let i = 0; i < imgs.length; i++) {
+            var span = document.createElement('span');
+            span.setAttribute('index', i);
+            divDots.appendChild(span);
+            createImg(imgs[i]);
+        }
+        createImg(imgs[0]);
+        divImg.style.width = (imgs.length + 2) * containerWidth + 'px';
+        divImg.style.marginLeft = getTarget() + 'px';
+
+        function createImg(obj) {
+            var a = document.createElement('a');
+            a.href = '#';
+            var img = document.createElement('img');
+            img.src = obj.src;
+            a.appendChild(img);
+            divImg.appendChild(a);
+        }
+    }
+
+    function getTarget() {
+        return -(index + 1) * containerWidth
+    }
+
+    function set() {
+
+        if (moveTimer) {
+            clearInterval(moveTimer);
+            moveTimer = null;
+        }
+        var target = getTarget();
+        var leftpx = parseInt(getComputedStyle(divImg).marginLeft);
+        var min = -imgs.length * containerWidth;
+        var step = 15;
+
+        moveTimer = setInterval(function () {
+            leftpx -= step;
+            if (leftpx <= min) {
+                leftpx = 0;
+            }
+            if (leftpx - target <= step) {
+                leftpx = target;
+                clearInterval(moveTimer);
+                moveTimer = null;
+            }
+            divImg.style.marginLeft = leftpx + 'px';
+        }, 20)
+
+    }
+
+    function auto() {
+        autoTimer = setInterval(function () {
+            index++;
+            if (index == 3) {
+                index = 0;
+            }
+            set();
+        }, 3000)
+
+    }
+    divDots.onclick=function(e){
+        if (e.target.tagName === 'SPAN'){
+            var i= parseInt(e.target.getAttribute("index"));
+            index=i;
+            set();
+        }
+    }
+    
+    createElements();
+    auto();
+    container.onmouseover = function () {
+        clearInterval(autoTimer);
+    }
+    container.onmouseout = function () {
+        auto();
+    }
+
+</script>
+
+</html>
