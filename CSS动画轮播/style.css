@@ -1,0 +1,52 @@
+.container{
+    width: 300px;
+    height: 300px;
+    margin: 50px auto;
+    border: 1px solid black;
+    overflow: hidden;
+}
+.items{
+    position: relative;
+    width: 1200px;
+    height: 300px;
+    background-color: aliceblue;
+    /* 设置动画名 */
+    animation-name: carousel;
+    /* 设置动画时间 */
+    animation-duration: 10s;
+    /* 设置动画次数 */
+    animation-iteration-count: infinite;
+    /* 设置动画线性变化 */
+    animation-timing-function: ease;
+}
+@keyframes carousel{
+    0%{
+        left: 0px;
+    }
+    35%{
+        left: -300px;
+    }
+    75%{
+        left: -600px;
+    }
+    100%{
+        left: -900px;
+    }
+}
+.item1,.item2,.item3,.item4{
+    width: 300px;
+    height: 300px;
+    float: left;
+}
+.item1{
+    background-color: azure;
+}
+.item2{
+    background-color: cadetblue;
+}
+.item3{
+    background-color: chartreuse;
+}
+.item4{
+    background-color: azure;
+}

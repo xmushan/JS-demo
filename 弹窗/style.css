@@ -1,0 +1,50 @@
+.content{
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    background-color: aliceblue;
+    text-align: center;
+    position: relative;
+    margin: auto;
+    opacity: 0;
+}
+.buttonOpen{
+    width: 50px;
+    height: 50px;
+    margin: 10px auto;
+}
+#show{
+    animation-name: show;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes show{
+    from {
+        opacity: 0;
+        top: -300px;
+        transform: rotate(0deg);
+    }to{
+        opacity: 1;
+        top: 50px;
+        transform: rotate(360deg);
+    }
+}
+#hidden{
+    animation-name: hidden;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+
+}
+@keyframes hidden{
+    from{
+        opacity: 1;
+        top: 50px;
+        transform: rotate(0deg);
+    }to{
+        opacity: 0;
+        top: -300px;
+        transform: rotate(360deg);
+    }
+}
