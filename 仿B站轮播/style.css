@@ -1,0 +1,72 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+#app{
+    width: 550px;
+    height: 242px;
+    position: relative;
+    margin: 100px auto;
+    overflow: hidden;
+}
+.banner-list{
+    position: relative;
+    width: 3300px;
+    height: 242px;
+    left:0;
+    transition: ease-out 0.5s;
+}
+.banner{
+    position: relative;
+    float: left;
+    width: 550px;
+    height: 242px;
+}
+.banner img{
+    width: 550px;
+    height: 242px;
+}
+.banner .mark {
+    position: relative;
+    bottom: 30px;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.3)
+}
+.banner .title{
+    position: relative;
+    bottom: 78px;
+    left: 10px;
+    color: #ffffff;
+}
+.index-list{
+    position: absolute;
+    bottom: 3px;
+    right: 10px;
+    font-size: 0;
+}
+.index{
+    display: inline-block;
+    vertical-align: middle;
+    width: 6px;
+    height: 6px;
+    border: 2px solid transparent;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin-left: 10px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.index:hover{
+    border-color: #fff;
+    background-color: #73c9e5;
+}
+.active{
+    width: 15px;
+    height: 15px;
+    background-image: url('./img/icon_slide_selected.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}

@@ -8,8 +8,6 @@ window.onload = function () {
     // 获得 购物车的 坐标点
     const ENDLEFT = shoppingCar.offsetLeft
     const ENDTOP = shoppingCar.offsetTop
-    //定义 一个 值 储存 正在动画的小球
-    var now = null
     // 添加储存五个小球动画的函数
     function addelement() {
         var ball = null
@@ -24,7 +22,6 @@ window.onload = function () {
         document.body.appendChild(ballContainer)
     }
     addelement()
-
     //获得 隐藏的小球 dom元素
     var isshow = document.getElementsByClassName('isshow')
     button.onclick = function(){
